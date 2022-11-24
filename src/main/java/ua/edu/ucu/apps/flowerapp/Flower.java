@@ -1,63 +1,54 @@
 package ua.edu.ucu.apps.flowerapp;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
 
+@Getter
+@Setter
+@Entity
+@Table(name = "flowers")
 public class Flower extends Item{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private double sepalLength;
-    private FlowerColor color;
     private double price;
 
+    private double sepalLength;
+
+    @Enumerated(EnumType.STRING)
+    private FlowerColor color;
+
+    @Enumerated(EnumType.STRING)
+    private FlowerType type;
+
     public Flower() {
+
     }
 
-    public Flower(final double newSepalLength, final FlowerColor newColor, final double newPrice) {
-        this.sepalLength = newSepalLength;
-        this.color = newColor;
+    public Flower(final FlowerType newType) {
+        this.type = newType;
+    }
+
+    public Flower(final FlowerType newType, final double newPrice, final double newSepalLength, final FlowerColor flowerColor) {
+        this.type = newType;
         this.price = newPrice;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Flower flower)) {
-            return false;
-        }
-        return Double.compare(flower.sepalLength, sepalLength) == 0
-                && Double.compare(flower.price, price) == 0 && color == flower.color;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(sepalLength, color, price);
-    }
-
-    //    sepalLength, color, and price.
-    public double getSepalLength() {
-        return sepalLength;
-    }
-
-    public void setSepalLength(double newSepalLength) {
         this.sepalLength = newSepalLength;
+        this.color = flowerColor;
     }
 
-    public String getColor() {
+    public final String getColor() {
         return color.getColor();
     }
 
-    public void setColor(FlowerColor newColor) {
-        this.color = newColor;
+    public final String toString() {
+        return "Flower: " + type + ", price: " + price + ", sepal length: " + sepalLength + ", color: " + color;
     }
-
-    public double getPrice() {
-        return price;
-    }
-
-
-    public void setPrice(double newPrice) {
-        this.price = newPrice;
-    }
-
 }
