@@ -1,6 +1,7 @@
 package ua.edu.ucu.apps.flowerapp;
 
 import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 @NoArgsConstructor
@@ -9,16 +10,17 @@ public class Order {
     public Payment payment;
     public Delivery delivery;
 
-    public void setPayment(Payment payment){
+    public void setPayment(Payment payment) {
         payment = payment;
     }
 
-    public void setDelivery(Delivery delivery){
+    public void setDelivery(Delivery delivery) {
         delivery = delivery;
     }
-    public double calculateTotalPrice(){
+
+    public double calculateTotalPrice() {
         double price = 0;
-        for (Item item :items){
+        for (Item item : items) {
             price += item.getPrice();
         }
         return price;
