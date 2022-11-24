@@ -6,9 +6,6 @@ public class FlowerPack extends Item{
     private Flower flower;
     private int amount;
 
-    public FlowerPack() {
-    }
-
     public FlowerPack(final Flower newFlower, final int newAmount) {
         this.flower = newFlower;
         this.amount = newAmount;

@@ -2,6 +2,10 @@ package ua.edu.ucu.apps.flowerapp;
 
 public class Chamomile extends Flower {
     public Chamomile() {
-        super(10, FlowerColor.WHITE, 10);
+        super(FlowerType.CHAMOMILE);
+    }
+
+    public Chamomile(final double price, final double sepalLength, final FlowerColor color) {
+        super(FlowerType.CHAMOMILE, price, sepalLength, color);
     }
 }

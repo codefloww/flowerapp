@@ -45,7 +45,7 @@ public class Store {
         assortement.add(newItem);
     }
 
-    @GetMapping("database/get")
+    @GetMapping("/database/get")
     public List<Flower> getFlowers() {
         return flowerappApplication.getFlowersFromDB();
     }

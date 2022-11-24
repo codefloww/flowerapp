@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class FlowerBucket extends Item{
     private final ArrayList<FlowerPack> bucket = new ArrayList<>();
-
     public void add(final FlowerPack pack) {
         bucket.add(pack);
     }
