@@ -6,21 +6,24 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @RequestMapping("/store")
 @RestController
 public class Store {
     private final FlowerappApplication flowerappApplication;
-
-    @Autowired
-    public Store(FlowerappApplication flowerappApplication){
-        this.flowerappApplication = flowerappApplication;
-    }
     // For simple url work demonstration
     private final ArrayList<Item> assortement = new ArrayList<>();
+
+    @Autowired
+    public Store(FlowerappApplication flowerappApplication) {
+        this.flowerappApplication = flowerappApplication;
+    }
+
     @GetMapping
-    public final String greeting(){
+    public final String greeting() {
         return "Our initial page is working.";
     }
+
     @GetMapping("/allitems")
     public List<Item> getAssortement() {
         assortement.add(new Tulip());
@@ -36,13 +39,14 @@ public class Store {
         }
         return false;
     }
+
     @GetMapping("/additem")
     public void addItem(final Item newItem) {
         assortement.add(newItem);
     }
 
     @GetMapping("database/get")
-    public List<Flower> getFlowers(){
+    public List<Flower> getFlowers() {
         return flowerappApplication.getFlowersFromDB();
     }
 

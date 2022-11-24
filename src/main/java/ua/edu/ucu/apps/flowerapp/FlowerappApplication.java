@@ -24,6 +24,7 @@ public class FlowerappApplication {
     public List<Flower> getFlowersFromDB() {
         return flowerRepository.findAll();
     }
+
     public void addFlowerToDB(Flower flower) {
         flowerRepository.save(flower);
     }
